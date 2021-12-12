@@ -7,9 +7,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class JpaWebApplication {
 
 	public static void main(String[] args) {
-		Main main = new Main();
-		main.setData("kos");
-		String data = main.getData();
+		Hello hello = new Hello();
+		hello.setData("kos");
+		String data = hello.getData();
 		System.out.println("data = " + data);
 		SpringApplication.run(JpaWebApplication.class, args);
 	}
