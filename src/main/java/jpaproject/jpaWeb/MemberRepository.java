@@ -1,5 +1,6 @@
 package jpaproject.jpaWeb;
 
+import jpaproject.jpaWeb.domain.Member;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
