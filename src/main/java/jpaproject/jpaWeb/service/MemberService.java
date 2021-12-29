@@ -2,9 +2,7 @@ package jpaproject.jpaWeb.service;
 
 import jpaproject.jpaWeb.MemberRepository;
 import jpaproject.jpaWeb.domain.Member;
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
