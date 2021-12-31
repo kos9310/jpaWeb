@@ -1,6 +1,6 @@
 package jpaproject.jpaWeb.service;
 
-import jpaproject.jpaWeb.MemberRepository;
+import jpaproject.jpaWeb.repository.MemberRepository;
 import jpaproject.jpaWeb.domain.Member;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

@@ -1,7 +1,6 @@
 package jpaproject.jpaWeb;
 
-import jpaproject.jpaWeb.domain.Member;
-import org.assertj.core.api.Assertions;
+import jpaproject.jpaWeb.repository.MemberRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +12,8 @@ import org.springframework.transaction.annotation.Transactional;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class MemberRepositoryTest {
-    @Autowired MemberRepository memberRepository;
+    @Autowired
+    MemberRepository memberRepository;
 
     @Test
     @Transactional

@@ -1,4 +1,4 @@
-package jpaproject.jpaWeb;
+package jpaproject.jpaWeb.repository;
 
 import jpaproject.jpaWeb.domain.Member;
 import lombok.RequiredArgsConstructor;
