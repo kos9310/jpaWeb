@@ -1,16 +1,16 @@
 package jpaproject.jpaWeb.service;
 
-import jpaproject.jpaWeb.domain.Delivery;
-import jpaproject.jpaWeb.domain.Member;
-import jpaproject.jpaWeb.domain.Order;
-import jpaproject.jpaWeb.domain.OrderItem;
+import jpaproject.jpaWeb.domain.*;
 import jpaproject.jpaWeb.domain.item.Item;
 import jpaproject.jpaWeb.repository.ItemRepository;
 import jpaproject.jpaWeb.repository.MemberRepository;
 import jpaproject.jpaWeb.repository.OrderRepository;
+import jpaproject.jpaWeb.repository.OrderSearch;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 @Service
 @Transactional(readOnly = true)
@@ -33,6 +33,7 @@ public class OrderService {
         //배송정보 생성
         Delivery delivery = new Delivery();
         delivery.setAddress(member.getAddress());
+        delivery.setStatus(DeliveryStatus.READY);
 
         //주문상품 생성
         OrderItem orderItem = OrderItem.createOrderItem(item, item.getPrice(), count);
@@ -42,7 +43,6 @@ public class OrderService {
 
         //주문 저장
         orderRepository.save(order);
-
         return order.getId();
     }
 
@@ -58,7 +58,7 @@ public class OrderService {
     }
 
     //검색
-/*    public List<Order> findOrders(OrderSearch orderSearch) {
-        return orderRepository.findAll(orderSearch);
-    }*/
+    public List<Order> findOrders(OrderSearch orderSearch) {
+        return orderRepository.findAllByString(orderSearch);
+    }
 }
