@@ -5,6 +5,7 @@ import jpaproject.jpaWeb.domain.Order;
 import jpaproject.jpaWeb.domain.OrderStatus;
 import jpaproject.jpaWeb.repository.OrderRepository;
 import jpaproject.jpaWeb.repository.OrderSearch;
+import jpaproject.jpaWeb.repository.order.simplequery.OrderSimpleQueryDto;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -58,20 +59,26 @@ public class OrderSimpleApiController {
         return result;
     }
 
+    @GetMapping("/api/v4/simple-orders")
+    public List<OrderSimpleQueryDto> ordersV4() {
+        return orderRepository.findOrderDtos();
+    }
+
     @Data
     static class SimpleOrderDto {
         private Long orderId;
         private String name;
-        private LocalDateTime orderData;
+        private LocalDateTime orderDate; //주문시간
         private OrderStatus orderStatus;
         private Address address;
-
         public SimpleOrderDto(Order order) {
             orderId = order.getId();
-            name =order.getMember().getName(); //LAZY 초기화
-            orderData = order.getOrderDate();
+            name = order.getMember().getName();
+            orderDate = order.getOrderDate();
             orderStatus = order.getStatus();
-            address = order.getDelivery().getAddress(); //LAZY 초기화
+            address = order.getDelivery().getAddress();
         }
     }
+
+
 }
